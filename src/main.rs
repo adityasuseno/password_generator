@@ -65,6 +65,7 @@ fn main() {
             && use_uppercase == false
             && use_numbers == false
             && use_symbols == false
+            || password_length == 0
         {
             println!("Here is your password:");
             println!("You don't generate anything huh...");
