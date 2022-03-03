@@ -69,6 +69,13 @@ fn main() {
         {
             println!("Here is your password:");
             println!("You don't generate anything huh...");
+            let answer = Question::new("Do you want to create another password?")
+                .default(Answer::NO)
+                .show_defaults()
+                .confirm();
+            if answer == Answer::YES {
+                main();
+            }
             break;
         }
 
@@ -80,8 +87,16 @@ fn main() {
             .symbols(use_symbols)
             .spaces(false)
             .exclude_similar_characters(false)
-            .strict(true);
+            .strict(false);
         println!("Here is your password: {}", p.generate_one().unwrap());
+
+        let answer = Question::new("Do you want to create another password?")
+            .default(Answer::NO)
+            .show_defaults()
+            .confirm();
+        if answer == Answer::YES {
+            main();
+        }
         break;
     }
 }
